@@ -37,18 +37,4 @@ void preFixa(TNoHuffman* no, int nivel) {
 	}
 }
 
-void criarTabelaHuffman(TNoHuffman* no, string codigo, TabelaHuffman* tabela, int i) {
-	if (no) {
-		if (no->letra != '\0') {
-			tabela[i].letra = no->letra;
-			tabela[i].codigo = codigo;
-			i++;
-		}
-		else {
-			criarTabelaHuffman(no->esquerda, codigo + "0", tabela, i);
-			criarTabelaHuffman(no->direita, codigo + "1", tabela, i);
-		}
-	}
-}
-
 #endif //HUFFMAN_H
