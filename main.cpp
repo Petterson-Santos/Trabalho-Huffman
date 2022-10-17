@@ -8,25 +8,31 @@ using namespace std;
 		Fazer a lista de frequencia de caracteres :: DONE
 			Inserir item na lista ou incrementar frequencia :: DONE
 			Ordenar lista por frequencia (crescente) :: DONE
-		Montar a arvore de Huffman (lista com só um nó) ::
-		Gerar a tabela de código Huffman :: 
+		Montar a arvore de Huffman (lista com só um nó) :: DONE
+		Gerar a tabela de código Huffman :: DONE
 		Varrer o texto original e escrever a frase em codigo :: 
 	DECODIFICAR ::
 */
 
 int main() {
 	string mensagem = "maria e linda";
-	TListaEncadeada<TNoHuffman> lista;
-	inicializarListaEncadeada(lista);
+	TListaEncadeada<TNoHuffman*> lista = criaNovaLista(mensagem);
 
-	for (int i = 0; i < mensagem.length(); i++) {
-		insereLetraListaEncadeada(lista, mensagem[i]);
-	}
+	imprimeListaEncadeadaHuffman(lista);
+	ordenarListaEncadeada(lista);
+	cout << endl;
+	imprimeListaEncadeadaHuffman(lista);
 
+	criarArvoreHuffman(lista);
+	cout << endl;
 	imprimeListaEncadeadaHuffman(lista);
 	cout << endl;
-	ordenarListaEncadeada(lista);
-	imprimeListaEncadeadaHuffman(lista);
+	preFixa(lista.inicio->dado, 0);
+
+	TListaEncadeada<TabelaHuffman*> tabela;
+	inicializarListaEncadeada(tabela);
+	criaNovaTabela(lista.inicio->dado, "", tabela);
+	imprimirTabelaHuffman(tabela);
 
 	return 0;
 }
